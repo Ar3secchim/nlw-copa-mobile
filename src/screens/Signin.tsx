@@ -1,10 +1,15 @@
 import { Center, Text, Icon } from "native-base";
-import {Fontisto} from "@expo/vector-icons"
+import { Fontisto } from "@expo/vector-icons"
+import { useAuth } from "../hooks/useAth";
 
 import { Button } from "../components/Button";
 import Logo from "../assets/logo.svg"
 
-export function Singin (){
+export function Singin(){
+  const { signIn, user } = useAuth();
+
+  console.log({ user })
+
   return(
     <Center flex={1} bg="gray.900" p={7} >
       <Text color="white" fontSize={24} fontFamily="heading">
@@ -16,6 +21,7 @@ export function Singin (){
         leftIcon={ <Icon as={Fontisto} name='google' color='white' size='md' /> }
         title=" ENTRAR COM O GOOGLE"
         mt={12}
+        onPress={ signIn }
       />
 
       <Text color="white" fontSize={14} textAlign="center" mt={4}>
